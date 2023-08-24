@@ -1,49 +1,74 @@
-const PERSON = [{
-    id:1,
-            name:'Mestre Yoda',
-            image:'images/yoda.png'
-        },
-    {
-          id:2,
-            name:'Luke',
-            image:'images/luke.png'
-        },
-    {  id:3,
-            name:'Leia',
-            image:'images/leia.png'
-        },
-    {  id:4,
-            name:'Hansolo',
-            image:'images/hansolo.png'
-        },
-    {  id:5,
-            name:'Vader',
-            image:'images/vader.png'
-        },
-    {  id:6,
-            name:'Chewbacca',
-            image:'images/chewbacca.png'
-        },
-    {  id:7,
-            name:'R2d2',
-            image:'images/r2d2.png'
-        },
-    {  id:8,
-            name:'C3po',
-            image:'images/c3po.png'
-        }]
+const LIST = [{
+    id: 1,
+    nome: 'Mestre Yoda',
+    avatar: 'images/yoda.png'
+},
+{
+    id: 2,
+    nome: 'Luke',
+    avatar: 'images/luke.png'
+},
+{
+    id: 3,
+    nome: 'Leia',
+    avatar: 'images/leia.png'
+},
+{
+    id: 4,
+    nome: 'Hansolo',
+    avatar: 'images/hansolo.png'
+},
+{
+    id: 5,
+    nome: 'Vader',
+    avatar: 'images/vader.png'
+},
+{
+    id: 6,
+    nome: 'Chewbacca',
+    avatar: 'images/chewbacca.png'
+},
+{
+    id: 7,
+    nome: 'R2d2',
+    avatar: 'images/r2d2.png'
+},
+{
+    id: 8,
+    nome: 'C3po',
+    avatar: 'images/c3po.png'
+}]
 
 const App = new Vue({
-    el:'#app',
-    data:{
-        title:'Start Wars lego',
+    el: '#app',
+    data: {
+        title: 'Start Wars lego',
         userName: 'Rodrigo',
-        characters:PERSON
-    
+        characters: LIST,
+        searchName: ''
+
     },
     methods: {
         like(userName) {
             alert(`O personagem ${userName} recebeu um like`)
+        },
+        search() {
+
+            if(this.searchName === '') {
+                return alert('O campo é obrigatório!')
+            }
+
+            const list = this.characters = LIST
+
+            const result = list.filter(item => {
+                return item.nome === this.searchName
+            })
+
+            if(result.length <= 0) {
+                alert('Nenhum registro encontrado')
+            } else {
+                this.characters = result
+            }           
         }
     }
 })
