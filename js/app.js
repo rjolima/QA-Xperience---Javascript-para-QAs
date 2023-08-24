@@ -52,9 +52,20 @@ const App = new Vue({
         like(userName) {
             alert(`O personagem ${userName} recebeu um like`)
         },
+
+        remove(id) {
+            const list = this.characters
+            
+            const result = list.filter(item => {
+                return item.id !== id
+            })
+
+            this.characters = result
+        },
+
         search() {
 
-            if(this.searchName === '') {
+            if (this.searchName === '') {
                 return alert('O campo é obrigatório!')
             }
 
@@ -64,11 +75,11 @@ const App = new Vue({
                 return item.nome === this.searchName
             })
 
-            if(result.length <= 0) {
+            if (result.length <= 0) {
                 alert('Nenhum registro encontrado')
             } else {
                 this.characters = result
-            }           
+            }
         }
     }
 })

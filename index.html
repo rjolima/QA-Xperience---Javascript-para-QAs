@@ -5,28 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>QA Xperience</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
     <div id="app">
-        <h1>{{title}}</h1>
-        <small>Olá , {{userName}}</small>
 
-        <form>
-            <input placeholder="Busca por nome..." v-model="searchName">
-            <button type="button" @click="search()">Buscar</button>
-        </form>
-x1
-        <div class="content">
+        <div class="top">
+            <div>
+                <h1>{{title}}</h1>
+                <small>Olá , {{userName}}</small>
+            </div>
+    
+            <form>
+                <input placeholder="Busca por nome..." v-model="searchName">
+                <button class="btn-main" type="button" @click="search()">Buscar</button>
+            </form>
+        </div>
 
+        <div class="characters">
             <div class="item" v-for="item  of characters" :key="item.id">
                 <img :src="item.avatar" :alt="item.nome">
-                <span>{{item.nome}}</span>
-                <button style="cursor: pointer;" data-test="like" @click="like(item.nome)">Like</button>
+                <p>{{item.nome}}</p>
+                <span title="Like"  data-test="like" @click="like(item.nome)" class=" like material-symbols-outlined">
+                    favorite
+                </span>
+                <span title="Remove" data-test="like" @click="remove(item.id)" class="remove material-symbols-outlined">
+                    delete
+                </span>
             </div>
-
         </div>
     </div>
 
